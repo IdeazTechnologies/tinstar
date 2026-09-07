@@ -85,7 +85,7 @@ export default function Navbar({ onOpenBooking, onOpenBrandKit }) {
           
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-1">
-            <Logo size={isScrolled ? 'sm' : 'md'} onOpenBrandKit={onOpenBrandKit} />
+            <Logo variant="emblem" size={isScrolled ? 'sm' : 'md'} onOpenBrandKit={onOpenBrandKit} />
           </a>
 
           {/* Desktop Navigation Links */}

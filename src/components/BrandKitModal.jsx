@@ -33,10 +33,10 @@ export default function BrandKitModal({ isOpen, onClose }) {
             </div>
             <div>
               <h3 className="text-xl md:text-2xl font-bold font-heading">
-                TinStar Brand Identity & Logo Suite
+                TinStar Brand Identity &amp; Primary Emblem
               </h3>
               <p className="text-sm text-slate-300">
-                Official visual assets for tinstar.ca &bull; Nanaimo, BC
+                Official visual brand assets for tinstar.ca &bull; Nanaimo, BC
               </p>
             </div>
           </div>
@@ -56,13 +56,13 @@ export default function BrandKitModal({ isOpen, onClose }) {
           <div className="bg-brand-50/70 border border-brand-200/80 rounded-2xl p-5 md:p-6 text-slate-700">
             <div className="flex items-center gap-2 mb-2">
               <ShieldCheck className="w-5 h-5 text-brand-600" />
-              <span className="font-heading font-bold text-slate-900 text-lg">The TinStar Symbolism</span>
+              <span className="font-heading font-bold text-slate-900 text-lg">The Primary Emblem Architecture</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-600">
-              The logo merges three foundational pillars of the company:
-              <strong> 1) The Polished Tin Star:</strong> honoring old-school tinsmithing and custom sheet metal fabrication that defines proper airflow.
-              <strong> 2) The Flame:</strong> representing cozy home heating, gas systems, and winter warmth across Nanaimo.
-              <strong> 3) The Cool Air Swirl:</strong> representing air conditioning, heat pumps, and certified air balancing.
+              The official <strong>Primary Emblem</strong> is the heart of the TinStar brand. It features:
+              <strong> 1) Polished 3D Tin Facets:</strong> hand-finished metallic silver star honoring master sheet metal craftsmanship.
+              <strong> 2) Sculpted Heating Flame:</strong> vibrant amber-orange flame representing cozy winter warmth and gas systems.
+              <strong> 3) Crisp Cooling Wave:</strong> azure-cyan water swirl representing air conditioning, heat pumps, and balanced ventilation.
             </p>
           </div>
 
@@ -70,73 +70,81 @@ export default function BrandKitModal({ isOpen, onClose }) {
           <div>
             <h4 className="text-sm uppercase tracking-wider font-bold text-slate-400 mb-4 flex items-center gap-2">
               <Palette className="w-4 h-4 text-brand-500" />
-              Logo Variations & Assets
+              Official Logo Formats &amp; Downloads
             </h4>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               
-              {/* Option 1: 3D Rendered Emblem */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:shadow-md transition-shadow">
+              {/* Option 1: 3D Rendered Primary Emblem */}
+              <div className="bg-slate-50 border-2 border-brand-500/40 rounded-2xl p-5 flex flex-col justify-between hover:shadow-lg transition-shadow relative">
+                <div className="absolute -top-3 right-4 bg-brand-600 text-white text-[10px] uppercase tracking-widest font-black px-2.5 py-0.5 rounded-full shadow">
+                  Official Site Logo
+                </div>
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand-100 text-brand-700">
-                      Primary Emblem
+                      Primary Emblem (Full)
                     </span>
-                    <span className="text-xs text-slate-400">PNG / 3D Render</span>
+                    <span className="text-xs text-slate-400">Master 3D Render</span>
                   </div>
-                  <div className="h-44 bg-white rounded-xl border border-slate-200/80 flex items-center justify-center p-4 mb-4">
+                  <div className="h-44 bg-white rounded-xl border border-slate-200/80 flex items-center justify-center p-3 mb-4">
                     <img
                       src="/images/tinstar-logo-emblem.png"
-                      alt="TinStar 3D Emblem"
+                      alt="TinStar 3D Primary Emblem"
                       className="max-h-36 object-contain drop-shadow-md"
                     />
                   </div>
                   <p className="text-xs text-slate-500 mb-3">
-                    High-impact 3D render with metallic silver star, sculpted heating flame, and cooling wave. Ideal for website heroes, printed signs & premium vehicle wraps.
+                    The complete official Primary Emblem with 3D star, heating flame, cooling swirl, and stacked Nanaimo BC typography.
                   </p>
                 </div>
-                <a
-                  href="/images/tinstar-logo-emblem.png"
-                  download="tinstar-primary-emblem.png"
-                  className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-brand-600 transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  Download High-Res PNG
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="/images/tinstar-logo-emblem-transparent.png"
+                    download="tinstar-primary-emblem-transparent.png"
+                    className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-brand-600 text-white text-xs font-semibold hover:bg-brand-700 transition-colors shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Download Transparent PNG
+                  </a>
+                  <a
+                    href="/images/tinstar-logo-emblem.png"
+                    download="tinstar-primary-emblem-original.png"
+                    className="w-full inline-flex items-center justify-center gap-2 py-1.5 px-3 rounded-xl bg-slate-200 text-slate-700 text-[11px] font-semibold hover:bg-slate-300 transition-colors"
+                  >
+                    Download High-Res Original
+                  </a>
+                </div>
               </div>
 
-              {/* Option 2: Precision SVG Vector Star */}
+              {/* Option 2: 3D Star Icon (Transparent Mark) */}
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-flame-100 text-flame-700">
-                      Vector SVG Icon
+                      3D Star Mark
                     </span>
-                    <span className="text-xs text-slate-400">Scalable &bull; 0 KB</span>
+                    <span className="text-xs text-slate-400">Transparent PNG</span>
                   </div>
                   <div className="h-44 bg-white rounded-xl border border-slate-200/80 flex items-center justify-center p-4 mb-4">
-                    <LogoIcon size={84} />
+                    <img
+                      src="/images/tinstar-star-3d.png"
+                      alt="TinStar 3D Star Mark"
+                      className="max-h-32 object-contain drop-shadow"
+                    />
                   </div>
                   <p className="text-xs text-slate-500 mb-3">
-                    Pure scalable vector icon. Ultra crisp at any scale from 16px favicon up to a billboard. Fast-loading, responsive, and retina-ready.
+                    The standalone 3D Star Mark extracted directly from the Primary Emblem. Used for the site header lockup, app icons, and social avatars.
                   </p>
                 </div>
-                <button
-                  onClick={() => copyToClipboard('<svg...TinStarIcon.../>', 'svg-icon')}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors border border-slate-300"
+                <a
+                  href="/images/tinstar-star-3d.png"
+                  download="tinstar-3d-star-mark.png"
+                  className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors"
                 >
-                  {copiedCode === 'svg-icon' ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700">Copied SVG to Clipboard!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      Copy Vector Code
-                    </>
-                  )}
-                </button>
+                  <Download className="w-3.5 h-3.5" />
+                  Download 3D Star Mark (PNG)
+                </a>
               </div>
 
               {/* Option 3: Dark Mode Vehicle / Workwear Badge */}
@@ -144,19 +152,19 @@ export default function BrandKitModal({ isOpen, onClose }) {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-brand-500/20 text-brand-300 border border-brand-500/30">
-                      Workwear & Van Badge
+                      Workwear &amp; Van Badge
                     </span>
-                    <span className="text-xs text-slate-400">Dark Badge</span>
+                    <span className="text-xs text-slate-400">Dark Decal</span>
                   </div>
                   <div className="h-44 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center p-4 mb-4">
                     <LogoBadge size={54} theme="light" />
                   </div>
                   <p className="text-xs text-slate-400 mb-3">
-                    Uniform embroidery badge and navy service van door decal with high-contrast text and dual heating/cooling badges.
+                    Uniform embroidery badge and navy service van door decal featuring the 3D Star Mark with high-contrast text.
                   </p>
                 </div>
                 <button
-                  onClick={() => copyToClipboard('TinStar Dark Mode Badge Component', 'badge-copy')}
+                  onClick={() => copyToClipboard('TinStar 3D Star Badge for Uniforms & Vans', 'badge-copy')}
                   className="w-full inline-flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-colors border border-slate-700"
                 >
                   {copiedCode === 'badge-copy' ? (
@@ -219,7 +227,7 @@ export default function BrandKitModal({ isOpen, onClose }) {
                 </div>
               </div>
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="text-xs uppercase font-bold text-slate-400 mb-1">Body & Interface Font</div>
+                <div className="text-xs uppercase font-bold text-slate-400 mb-1">Body &amp; Interface Font</div>
                 <div className="text-2xl font-bold font-sans text-slate-900">Plus Jakarta Sans</div>
                 <div className="text-xs text-slate-500 mt-1">
                   Engineered for crisp readability on high-DPI screens and mobile devices during emergency calls.
@@ -233,13 +241,13 @@ export default function BrandKitModal({ isOpen, onClose }) {
         {/* Footer */}
         <div className="bg-slate-100 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-slate-200">
           <div className="text-xs text-slate-600">
-            Registered Trademark &copy; 2026 TinStar Heating & Cooling &bull; Nanaimo, BC &bull; tinstar.ca
+            Registered Trademark &copy; 2026 TinStar Heating &amp; Cooling &bull; Nanaimo, BC &bull; tinstar.ca
           </div>
           <button
             onClick={onClose}
             className="px-5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
           >
-            Done Reviewing Logos
+            Close Brand Suite
           </button>
         </div>
 
