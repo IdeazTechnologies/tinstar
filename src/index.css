@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom glow and backdrop effects */
+.glow-flame {
+  box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.4);
+}
+
+.glow-brand {
+  box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.4);
+}
+
+.glow-card {
+  box-shadow: 0 10px 30px -10px rgba(12, 74, 110, 0.12);
+}
+
+/* Glassmorphism */
+.glass-header {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: rgba(12, 74, 110, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom badge pulse animation */
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.92;
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 3s ease-in-out infinite;
+}
