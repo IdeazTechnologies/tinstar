@@ -1,65 +1,29 @@
 import React from 'react';
 
-export function LogoIcon({ size = 42, className = '' }) {
+/**
+ * 3D Star Icon from the Primary Emblem (transparent PNG)
+ */
+export function LogoIcon({ size = 48, className = '' }) {
   return (
-    <svg
+    <img
+      src="/images/tinstar-star-3d.png"
+      alt="TinStar 3D Star Emblem"
       width={size}
       height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="TinStar Logo Icon"
-    >
-      <defs>
-        <linearGradient id="tinStarMetal" x1="10%" y1="10%" x2="90%" y2="90%">
-          <stop offset="0%" stopColor="#cbd5e1" />
-          <stop offset="40%" stopColor="#94a3b8" />
-          <stop offset="70%" stopColor="#e2e8f0" />
-          <stop offset="100%" stopColor="#475569" />
-        </linearGradient>
-        <linearGradient id="flameFacet" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#ea580c" />
-          <stop offset="50%" stopColor="#f97316" />
-          <stop offset="100%" stopColor="#fbbf24" />
-        </linearGradient>
-        <linearGradient id="coolFacet" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38bdf8" />
-          <stop offset="60%" stopColor="#0284c7" />
-          <stop offset="100%" stopColor="#0369a1" />
-        </linearGradient>
-        <filter id="tinShadow" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodOpacity="0.25" floodColor="#0f172a" />
-        </filter>
-      </defs>
-
-      <g filter="url(#tinShadow)">
-        {/* Left 3D Tin Facets */}
-        <path d="M50 8 L50 50 L18 68 L28 34 Z" fill="url(#tinStarMetal)" />
-        <path d="M50 8 L50 50 L10 34 L28 34 Z" fill="#64748b" opacity="0.9" />
-        <path d="M50 50 L50 92 L18 68 Z" fill="#334155" />
-
-        {/* Top Right Heating Flame Facet */}
-        <path d="M50 8 C56 22 66 24 74 18 C72 29 80 34 88 34 L50 50 Z" fill="url(#flameFacet)" />
-        <path d="M50 8 C53 18 60 22 66 22 C62 30 68 34 76 36 L50 50 Z" fill="#facc15" opacity="0.8" />
-
-        {/* Bottom Right Cooling Ice/Air Facet */}
-        <path d="M50 50 L88 34 C82 46 86 60 80 68 L50 50 Z" fill="url(#coolFacet)" />
-        <path d="M50 50 L80 68 C72 78 64 86 50 92 Z" fill="#0369a1" />
-        <path d="M50 50 L70 62 C65 70 58 76 50 82 Z" fill="#7dd3fc" opacity="0.85" />
-
-        {/* Crisp star center glimmer */}
-        <polygon points="50,44 52.5,48.5 57,49.5 53.5,53 54.5,58 50,55 45.5,58 46.5,53 43,49.5 47.5,48.5" fill="#ffffff" />
-      </g>
-    </svg>
+      className={`object-contain drop-shadow-sm select-none ${className}`}
+      loading="eager"
+    />
   );
 }
 
-export function LogoBadge({ size = 56, theme = 'dark' }) {
+/**
+ * Workwear / Decal Badge using the 3D Star Emblem
+ */
+export function LogoBadge({ size = 52, theme = 'dark' }) {
   const isLightText = theme === 'light';
   return (
     <div className="inline-flex items-center gap-3">
-      <div className="relative flex items-center justify-center p-2 rounded-2xl bg-gradient-to-br from-slate-900 to-brand-950 border border-brand-500/30 shadow-lg">
+      <div className="relative flex items-center justify-center p-2 rounded-2xl bg-gradient-to-br from-slate-900 via-brand-950 to-slate-900 border border-brand-500/30 shadow-lg">
         <LogoIcon size={size} />
       </div>
       <div className="flex flex-col">
@@ -72,76 +36,85 @@ export function LogoBadge({ size = 56, theme = 'dark' }) {
           </span>
         </div>
         <span className={`text-[11px] font-semibold tracking-wider uppercase ${isLightText ? 'text-slate-300' : 'text-slate-600'}`}>
-          <span className="text-flame-500">Heating</span> &bull; <span className="text-brand-500">Cooling</span> &bull; Air Balancing
+          <span className="text-flame-500 font-bold">Heating</span> &bull; <span className="text-brand-500 font-bold">Cooling</span> &bull; Air Balancing
         </span>
       </div>
     </div>
   );
 }
 
+/**
+ * Main Logo Component for TinStar Heating & Cooling
+ * Uses the Primary 3D Emblem requested by the client.
+ */
 export default function Logo({
-  variant = 'full',
-  theme = 'dark', // 'dark' = dark text on light background; 'light' = white text on dark background
+  variant = 'full', // 'full' (Primary Emblem + horizontal lockup), 'emblem' (pure Primary Emblem), 'badge'
+  theme = 'dark',   // 'dark' = for light backgrounds; 'light' = for dark backgrounds
   size = 'md',
   className = '',
   onOpenBrandKit = null
 }) {
-  const isLightText = theme === 'light';
+  const isLight = theme === 'light';
 
   if (variant === 'badge') {
     return <LogoBadge theme={theme} />;
   }
 
-  if (variant === 'raster') {
+  // Pure Primary Emblem standalone image
+  if (variant === 'emblem') {
+    const emblemHeight = size === 'lg' ? 'h-20' : size === 'sm' ? 'h-12' : 'h-16';
     return (
-      <div className={`inline-flex items-center gap-3 ${className}`}>
+      <div
+        className={`inline-flex items-center cursor-pointer group ${className}`}
+        onClick={onOpenBrandKit}
+        title="TinStar Heating & Cooling - Primary Emblem (Click for Brand Suite)"
+      >
         <img
-          src="/images/tinstar-logo-emblem.png"
+          src={isLight ? '/images/tinstar-logo-emblem-light-text.png' : '/images/tinstar-logo-emblem-transparent.png'}
           alt="TinStar Heating & Cooling Nanaimo"
-          className="h-11 w-11 object-contain drop-shadow"
+          className={`${emblemHeight} w-auto object-contain drop-shadow transition-transform duration-300 group-hover:scale-105`}
         />
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1.5">
-            <span className={`font-heading font-black text-2xl tracking-tight leading-none ${isLightText ? 'text-white' : 'text-slate-900'}`}>
-              TIN<span className="text-flame-500">STAR</span>
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">
-              .ca
-            </span>
-          </div>
-          <span className={`text-[10px] tracking-wider uppercase font-semibold mt-0.5 ${isLightText ? 'text-slate-300' : 'text-slate-500'}`}>
-            <span className="text-flame-500 font-bold">HEATING</span> &bull; <span className="text-brand-500 font-bold">COOLING</span> &bull; NANAIMO, BC
-          </span>
-        </div>
       </div>
     );
   }
 
-  // Default 'full' vector logo
-  const iconSize = size === 'lg' ? 52 : size === 'sm' ? 34 : 42;
-  const textSize = size === 'lg' ? 'text-3xl' : size === 'sm' ? 'text-lg' : 'text-2xl';
+  // Default 'full' brand lockup featuring the 3D Primary Emblem Star + crisp typography
+  const starSize = size === 'lg' ? 56 : size === 'sm' ? 40 : 48;
+  const mainTextSize = size === 'lg' ? 'text-2xl sm:text-3xl' : size === 'sm' ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl';
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none ${className}`}>
-      <div className="relative group cursor-pointer" onClick={onOpenBrandKit} title="Click to view TinStar Brand & Logo Variations">
-        <LogoIcon size={iconSize} className="transition-transform duration-300 group-hover:scale-105" />
+    <div
+      className={`inline-flex items-center gap-3 select-none cursor-pointer group ${className}`}
+      onClick={onOpenBrandKit}
+      title="TinStar Heating & Cooling (Click to view Brand Assets)"
+    >
+      {/* 3D Primary Emblem Star */}
+      <div className="relative shrink-0">
+        <img
+          src="/images/tinstar-star-3d.png"
+          alt="TinStar 3D Star Emblem"
+          style={{ width: `${starSize}px`, height: `${starSize}px` }}
+          className="object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
 
-      <div className="flex flex-col">
+      {/* Typography matched to the Primary Emblem brand styling */}
+      <div className="flex flex-col justify-center">
         <div className="flex items-center gap-1.5 leading-none">
-          <span className={`font-heading font-black ${textSize} tracking-tight ${isLightText ? 'text-white' : 'text-slate-900'}`}>
+          <span className={`font-heading font-black ${mainTextSize} tracking-tight ${isLight ? 'text-white' : 'text-slate-900'}`}>
             TIN<span className="text-flame-500">STAR</span>
           </span>
-          <span className="font-mono text-xs font-bold text-brand-600 bg-brand-50 border border-brand-200 px-1.5 py-0.5 rounded">
+          <span className="font-mono text-[11px] font-bold text-brand-600 bg-brand-50 border border-brand-200 px-1.5 py-0.5 rounded shadow-xs">
             .ca
           </span>
         </div>
-        <div className="flex items-center gap-1 text-[10px] tracking-widest uppercase font-bold mt-1">
+        
+        <div className="flex items-center gap-1 text-[10px] tracking-widest uppercase font-extrabold mt-1">
           <span className="text-flame-500">HEATING</span>
-          <span className="text-slate-300">&bull;</span>
+          <span className={isLight ? 'text-slate-500' : 'text-slate-300'}>&bull;</span>
           <span className="text-brand-500">COOLING</span>
-          <span className="text-slate-300">&bull;</span>
-          <span className={isLightText ? 'text-slate-300' : 'text-slate-500'}>NANAIMO, BC</span>
+          <span className={isLight ? 'text-slate-500' : 'text-slate-300'}>&bull;</span>
+          <span className={isLight ? 'text-slate-300' : 'text-slate-500'}>NANAIMO, BC</span>
         </div>
       </div>
     </div>
