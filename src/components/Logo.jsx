@@ -62,7 +62,7 @@ export default function Logo({
 
   // Pure Primary Emblem standalone image
   if (variant === 'emblem') {
-    const emblemHeight = size === 'lg' ? 'h-20' : size === 'sm' ? 'h-12' : 'h-16';
+    const emblemHeight = size === 'lg' ? 'h-20' : size === 'sm' ? 'h-12' : 'h-14';
     return (
       <div
         className={`inline-flex items-center cursor-pointer group ${className}`}
@@ -72,7 +72,7 @@ export default function Logo({
         <img
           src={isLight ? '/images/tinstar-logo-emblem-light-text.png' : '/images/tinstar-logo-emblem-transparent.png'}
           alt="TinStar Heating & Cooling Nanaimo"
-          className={`${emblemHeight} w-auto object-contain drop-shadow transition-transform duration-300 group-hover:scale-105`}
+          className={`${emblemHeight} w-auto object-contain drop-shadow transition-all duration-300 group-hover:scale-105`}
         />
       </div>
     );

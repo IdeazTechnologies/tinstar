@@ -9,10 +9,34 @@ export default function Navbar({ onOpenBooking, onOpenBrandKit }) {
   const [servicesDropdown, setServicesDropdown] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    let ticking = false;
+
+    const updateScrollState = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled((prevScrolled) => {
+        // Hysteresis prevents layout jitter and scroll-anchoring oscillation loops:
+        // - To enter compact scrolled state: user must scroll down past 70px
+        // - To return to relaxed state: user must scroll back to the very top (<= 15px)
+        if (prevScrolled) {
+          return scrollY > 15;
+        } else {
+          return scrollY > 70;
+        }
+      });
+      ticking = false;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollState);
+        ticking = true;
+      }
+    };
+
+    // Synchronize initial scroll position on mount
+    updateScrollState();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -26,7 +50,7 @@ export default function Navbar({ onOpenBooking, onOpenBrandKit }) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full transition-all duration-300">
+    <header className="sticky top-0 z-40 w-full transition-all duration-300" style={{ overflowAnchor: 'none' }}>
       
       {/* 24/7 Emergency Notification Top Bar */}
       <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-brand-950 text-white text-xs py-2 px-4 border-b border-white/10">
@@ -77,8 +101,8 @@ export default function Navbar({ onOpenBooking, onOpenBrandKit }) {
       <nav
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? 'glass-header shadow-lg shadow-slate-900/5 py-2.5 border-b border-slate-200/80'
-            : 'bg-white/95 backdrop-blur-md py-4 border-b border-slate-100'
+            ? 'glass-header shadow-lg shadow-slate-900/5 py-2 border-b border-slate-200/80'
+            : 'bg-white/95 backdrop-blur-md py-3.5 border-b border-slate-100'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
